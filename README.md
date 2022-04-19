@@ -8,6 +8,7 @@ Go to docker-compose file and type your repo, key and runner name:
       - RUNNER_URL=https://github.com/user/repo
       - RUNNER_TOKEN=%TOKEN%
       - RUNNER_NAME=runner-name-1
+      - RUNNER_LABELS=dev,stage,etc
 ```
 After you can build and start it:
 ```
