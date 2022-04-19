@@ -15,6 +15,6 @@ services:
       - RUNNER_URL=https://github.com/user/repo
       - RUNNER_TOKEN=%TOKEN%
       - RUNNER_NAME=runner-name-1
-      #- RUNNER_LABELS="--labels dev,stage,etc"
+      - RUNNER_LABELS=dev,stage,etc
     restart: unless-stopped
     privileged: true
