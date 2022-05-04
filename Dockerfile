@@ -12,11 +12,11 @@ RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezo
     # install runner
     apt-get -y update && \
     apt-get -y install curl make && \
-    mkdir -p /home/runner && cd /home/runner && \
+    mkdir -p /home/runner/runner && cd /home/runner/runner && \
     curl -o actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz && \
     tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz && \
     chown -R runner /home/runner && \
-    rm /home/runner/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz && \
+    rm /home/runner/runnner/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz && \
     ./bin/installdependencies.sh && \
     # install docker deps, composer v2, switcher
     apt-get -y install ca-certificates gnupg lsb-release kmod uidmap iptables iproute2 && \
@@ -45,4 +45,6 @@ RUN curl -fsSL https://get.docker.com/rootless | sh && \
 
 COPY --chmod=700 --chown=runner entrypoint.sh /entrypoint.sh
 
+# We need different bin folders for docker and github runner due to autoupdates
+WORKDIR /home/runner/runner
 ENTRYPOINT /entrypoint.sh
