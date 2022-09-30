@@ -7,7 +7,7 @@ services:
     build: 
       context: .
       args:
-        - RUNNER_VERSION=2.291.1
+        - RUNNER_VERSION=2.297.0
         - TZ=Europe/London
         - DOCKER_COMPOSE_VERSION=2.2.3
         - DOCKER_SWITCH_VERSION=1.0.4
